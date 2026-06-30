@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <form id="loginForm">
+            <div class="card-header">
+                <h2>CHATTER</h2>
+                <p>Введіть дані для доступу до програми</p>
+            </div>
+
+            <div class="input-group">
+                <label for="phone">Користувач</label>
+                <input 
+                    type="tel" 
+                    id="phone" 
+                    placeholder="Введіть свій номер телефону" 
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="nickname">Нікнейм</label>
+                <input 
+                    type="text" 
+                    id="nickname" 
+                    placeholder="Введіть свій нікнейм" 
+                    required
+                >
+            </div>
+
+            <button type="submit" class="btn-submit">Увійти в chatter</button>
+        </form>
+        
+        <div id="output" class="output-console"></div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const phone = document.getElementById('phone').value.trim();
+            const nickname = document.getElementById('nickname').value.trim();
+
+            if (!phone) {
+                alert("Введіть номер телефону!");
+                return;
+            }
+            if (!nickname) {
+                alert("Введіть нікнейм!");
+                return;
+            }
+
+            // Зберігаємо дані для Basik
+            localStorage.setItem('userPhone', phone);
+            localStorage.setItem('userNickname', nickname);
+
+            // Перехід на Basik
+            window.location.href = '../Basik/index.html';
+        });
+    </script>
+</body>
+</html>
